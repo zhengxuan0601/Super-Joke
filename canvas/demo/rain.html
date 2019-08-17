@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>雨</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        canvas{
+            background-color: black;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas class='rain'></canvas>
+</body>
+<script>
+    // 改变画布的大小
+    var oCanvas=document.querySelector('.rain');
+    var w,h;
+    var aRain=[] //保存雨滴数组
+    ~~function setSize(){
+        window.onresize=arguments.callee
+        // 获取屏幕的高度宽度
+        w=window.innerWidth
+        h=window.innerHeight
+        oCanvas.width=w
+        oCanvas.height=h
+    }()
+
+    var oRain=oCanvas.getContext('2d')
+    oRain.fillStyle='#2080f7'
+    // oRain.fillRect(50,0,2,5)
+
+    // 获取随机数的方法
+    function Random(startX,endX){
+        return Math.random()*(endX-startX)+startX
+    }
+
+    function Rain(){}
+    Rain.prototype={
+        // 定义雨滴的属性
+        init:function(){
+            this.x=Random(0,w)
+            this.y=0
+            this.vY=Random(4,5)  //雨滴下降的速度
+            this.h=Random(0.8*h,0.9*h)  //雨滴下降的高度
+            this.r=2  //圆形的半径
+        },
+        // 画雨滴
+        draw:function(){
+            if(this.y<this.h){
+                oRain.beginPath()
+                oRain.fillStyle='#2080f7'
+                oRain.fillRect(this.x,this.y,2,5)
+            }else{
+                oRain.beginPath()
+                oRain.strokeStyle='#2080f7'
+                oRain.arc(this.x,this.y,this.r,0,Math.PI*2)
+                oRain.stroke()
+            }
+        },
+        // 雨滴的移动
+        move:function(){
+            if(this.y<this.h){
+                this.y+=this.vY
+            }else{
+                if(this.r<50){
+                    this.r+=1
+                }else{
+                    this.init()
+                }
+            }
+            this.draw()
+        }
+    }
+    
+    // 画出多个雨滴
+    function createRain(num){
+        for(var i=0;i<num;i++){
+            setTimeout(function(){
+                var rain=new Rain()
+                rain.init()
+                rain.draw()
+                aRain.push(rain)
+            },i*200)
+        }
+    }
+    createRain(60)
+    setInterval(function(){
+        oRain.fillStyle='rgba(0,0,0,0.05)'  //添加一个蒙层
+        oRain.fillRect(0,0,w,h)
+        for(var item of aRain){
+            item.move()
+        }
+    },1000/60)
+</script>
+</html>
