@@ -58,13 +58,13 @@ function Progress(id, startX) {
             this.startX = this.startX + dif;
             this.firstMove(this.getRandom(30, 200));
          } else {
-            var dif = 0.1;
+            var dif = 0.05;
             if (this.startX < 100) {
                this.startX = this.startX + dif;
             } else {
                this.startX = 100;
             }
-            this.firstMove(this.getRandom(200, 300));
+            this.firstMove(this.getRandom(300, 500));
          }
          this.changeW();
          this.changeNum();
