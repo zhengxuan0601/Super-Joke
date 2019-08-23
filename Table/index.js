@@ -1,32 +1,41 @@
-window.onload = function(){
-    
-    function createTable(){
-        var tableObj = {
-            el:"#con",
-            theadCon:["姓名", "年龄", "性别", "地址", "公司", "职位"],
-            colums:[
-                {data:"name"},
-                {data:"age"},
-                {data:'sex'},
-                {data:"addr"},
-                {data:"company"},
-                {data:"job"}
-            ],
-            data:[],
-            action:{
-                name:'操作',
-                do:'<span class="edit">编辑</span><span class="del">删除</span>',
+window.onload = function() {
+    var data = {
+        id: 'table',
+        thead: [
+            {
+                title: '姓名',
+                name: 'name',
+                width: '100',
+            },
+            {
+                title: '性别',
+                name: 'sex',
+            },
+            {
+                title: '毕业学校',
+                name: 'school',
+            },
+            {
+                title: '毕业时间',
+                name: 'year',
             }
-        }
-        var tableData = localStorage.getItem('tableData')
-        if (tableData){
-            tableData = JSON.parse(tableData)
-            tableObj.data = tableData
-        }
-        new Table(tableObj)
+        ],
+        dataList: [
+            {
+                name: 'zxzxzx',
+                sex: '男',
+                school: '浙江大学宁波理工学院',
+                year: '2018-06-01'
+            },
+            {
+                name: 'qyc',
+                sex: '男',
+                school: '浙江大学宁波理工学院',
+                year: '2018-12-01'
+            }
+        ]
     }
-    createTable()
 
-    
-
+    var table = new Table(data);
+    table.init();
 }
