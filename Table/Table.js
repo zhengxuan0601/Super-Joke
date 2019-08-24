@@ -2,9 +2,10 @@
  * 
  * @param {*} oDiv table存放区域 
  * @param {*} theadList 头部表格标题[{title:'名称', width:'宽度', name:'数据名称'}]
- * @param {*} dataList 头部表格标题[{}]
- * @param {*} action 表格动作列表
- * @param {*} index 表格序号列表
+ * @param {*} dataList 头部表格标题[]
+ * @param {*} action 表格动作列表 {}
+ * @param {*} index 表格序号列表 Boolean
+ * @param {*} checkBox 表格选择框 Boolean
  */
 function Table(dataTable) {
     this.oDiv = document.getElementById(dataTable.id);
