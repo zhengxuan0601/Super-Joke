@@ -27,13 +27,14 @@ window.onload = function () {
             dataList: oData,// 表格数据
             action: {
                 title: '操作',
-                doc: `<span class='edit'>编辑</span> <span class='del'>删除</span>`
+                doc: `<span class='edit'>编辑</span> <span class='del'>删除</span>`,
+                width: '100'
             }
         }
         var table = new Table(data);
         table.init();
         del();
-        edit()
+        edit();
     }
     initTable();
     setTimeout(() => {

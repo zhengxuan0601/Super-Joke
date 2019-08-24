@@ -100,7 +100,11 @@ Table.prototype.createThead = function () {
 
     // 传入的参数是否有操作列表
     if (this.action) {
-        theadHtml = `${theadHtml}<th>${this.action['title']}</th>`
+        if (this.action.width) {
+            theadHtml = `${theadHtml}<th width='${this.action.width}'>${this.action['title']}</th>`
+        } else {
+            theadHtml = `${theadHtml}<th>${this.action['title']}</th>`
+        }
     } 
     var thead = `<tr>${theadHtml}</tr>`;
     return thead;

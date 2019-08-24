@@ -11,81 +11,80 @@
          margin: 0;
          padding: 0;
       }
-      .box{
-         width: 400px;
-         height: 400px;
-         margin: 100px auto;
+      body{
+         background: #000;
+      }
+      .con{
+         width: 500px;
+         height: 500px;
+         background: pink;
+         margin: 50px auto;
          position: relative;
-         border: 1px solid #ccc;
       }
-      .o{
-         width: 16px;
-         height: 16px;
-         background: #2080f7;
-         border-radius: 50%;
-         position: absolute;
-         bottom: 30px;
-         left: 30px;
-      }
-      .target{
+      .end{
          width: 50px;
          height: 50px;
+         position: absolute;
          background: #2080f7;
-         position: absolute;
          right: 0;
-         top: 40%;
+         top: 180px;
       }
-      p{
-         padding: 8px;
-         cursor: pointer;
-      }
-      @keyframes identifier {
-         from{
-            top: 0px;
-         }
-         to{
-            top: -40px;
-         }
-      }
-      .s{
-         color: #2080f7;
+      .start{
+         width: 50px;
+         height: 50px;
          position: absolute;
+         background: #eebd38;
+         left: 0px;
+         top: 250px;
+         z-index: 1;
       }
-      .move{
-         animation: identifier 0.2s 1;
+      .target{
+         width: 10px;
+         height: 10px;
+         border-radius: 50%;
+         background: #db2379;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         margin-top: -10px;
+         margin-left: -10px;
       }
    </style>
 </head>
 <body>
-   <div class='box'>
-      <p>点击</p>
-      <div class='target'>
+   <div class='con'>
+      <div class='start'>
+         <div class='target'></div>
       </div>
-      <div class='o'></div>
+      <div class='end'></div>
    </div>
 </body>
 <script>
-   var p = document.querySelector('p');
-   var o = document.querySelector('.o');
-   var tartget = document.querySelector('.target');
-   var s = document.querySelector('.s');
-   p.onclick = function () {
-      tartget.innerHTML = '';
-      var start = {
-         X: o.offsetLeft,
-         Y: o.offsetTop
-      }
-      var end = {
-         X: tartget.offsetLeft,
-         Y: tartget.offsetTop
-      }
-      var pa = new Parabola(start, end, o, function() {
-         var p = document.createElement('p');
-         p.classList = ['s move'];
-         p.innerText = '+1'
-         tartget.appendChild(p);
-      });
-      pa.fly();
+   var start = document.querySelector('.start');
+   var end = document.querySelector('.end');
+   var target = document.querySelector('.target');
+   // 传入开始坐标点
+   var startPo = {
+      "X": start.offsetLeft,
+      "Y": start.offsetTop
+   };
+   var endPo = {
+      "X": end.offsetLeft,
+      "Y": end.offsetTop
    }
+   var parabola = new Parabola(startPo, endPo, target, function() {
+      var opacity = '1'
+      this.target.style.opacity = opacity;
+      let timer = setInterval(() => {
+         if (opacity > 0) {
+            opacity -= 0.2;
+            this.target.style.opacity = opacity;
+         } else {
+            this.target.style.display = "none";
+         }
+         
+      },30)
+   });
+   parabola.fly();
 </script>
 </html>
