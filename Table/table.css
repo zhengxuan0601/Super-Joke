@@ -14,4 +14,57 @@ table tr th,table tr td{
 }
 table tr th{
     background: #f5f5f5;
+    position: relative;
+}
+table tr th:not(:last-child):before{
+    content: "";
+    width: 1px;
+    height: 40%;
+    background: #d0d0d0;
+    position: absolute;
+    right: 0;
+    top: 30%;
+}
+table input[type='checkbox']{
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+    outline: none;
+}
+table input[type='checkbox']:before{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #d0d0d0;
+    top: -12px;
+    cursor: pointer;
+}
+table input[type='checkbox']:checked:before{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #2080f7;
+    top: -12px;
+    background: url(./images/selected.png) no-repeat center;
+    background-size: 100%;
+}
+table input[type='checkbox'].halfCheck:before{
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #2080f7;
+    top: -12px;
+}
+table input[type='checkbox'].halfCheck:after{
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    top: -8px;
+    background: #2080f7;
+    left: 4px;
 }
