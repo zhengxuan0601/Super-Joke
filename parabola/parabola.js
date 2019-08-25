@@ -26,22 +26,24 @@ function Parabola(start, end, target, callback) {
       // 由抛物线公式可求出抛物线的a 和 b;
       this.a = (5 * this.difY) / (3 * Math.pow(this.difX, 2));
       this.b = (-8 * this.difY) / (3 * this.difX);
+   } else if (this.difY > 0) {
+      // 抛物线终点位置在初始位置下方
+      this.a = (-5 * this.difY) / (3 * Math.pow(this.difX,2));
+      this.b = (2 * this.difY) / (3 * this.difX);
    }
 }
 
 // 飞行的方法
 Parabola.prototype.fly = function () {
    let timer = setTimeout(() => {
-      if (this.difY < 0) {
-         this.moveDown();
-      }
+      this.moveUp();
       // 由于此次比例按照1：100, 所以在移动的时候this.x 和 this.y 需要 * 100;
       clearTimeout(timer);
    },30)
 }
 
-// 在抛物线开后向下的情况下运动路径
-Parabola.prototype.moveDown = function () {
+// 在抛物线运动轨迹向上的情况下运动路径
+Parabola.prototype.moveUp = function () {
    // 结束点在初始点右侧
    if(this.difX > 0) {
       this.x += (this.speed * 0.03);
