@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { message } from 'antd'
 import { REQUEST_SUCCESS } from '../config'
+import { Message } from 'element-ui'
 const http = axios.create({
-  timeout: 40000,
-  withCredentials: true,
+  timeout: 5000,
+  withCredentials: true
 })
 
 // 相应拦截器
@@ -17,10 +17,12 @@ http.interceptors.response.use(function (response) {
   if (response.headers['content-disposition'] && response.headers['content-disposition'].includes('attachment')) {
     return response
   }
-
   // 对错误进行统一处理
-  if (response.data.errcode !== REQUEST_SUCCESS) {
-    message.error(response.data.errmsg, 1.5)
+  if (response.data.code !== REQUEST_SUCCESS) {
+    Message({
+      message: response.data.errmsg,
+      type: 'error'
+    })
     return Promise.reject(response)
   }
   return Promise.resolve({
@@ -32,13 +34,13 @@ http.interceptors.response.use(function (response) {
   if (error.message.indexOf('timeout') > -1) {
     // 多语言需要自己在项目中配置
     // eslint-disable-next-line
-    message.error('请求超时，请重试', 1.5)
+    Message.error('请求超时，请重试！')
   }
   // http返回401的错误状态也认为是登录过期
   let res = error.response || {}
-  let errMessage = res.statusText || '错误的请求'
+  let message = res.statusText || '错误的请求'
   // 对响应错误做点什么
-  return Promise.reject(new Error(errMessage))
+  return Promise.reject(new Error(message))
 })
 
 // 请求拦截器

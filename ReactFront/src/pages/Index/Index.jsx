@@ -4,7 +4,6 @@ import { Button } from 'antd'
 import API from '../../api/allServeApi'
 
 export default class Index extends React.Component {
-
   componentDidMount () {
 
   }
