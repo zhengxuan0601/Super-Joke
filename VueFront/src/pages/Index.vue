@@ -1,7 +1,6 @@
 <template>
   <div>
     <p>欢迎使用</p>
-    <img src="../assets/images/logo.png" alt="">
   </div>
 </template>
 
