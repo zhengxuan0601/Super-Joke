@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <el-container class="el_co_page">
-      <el-aside width="240px">
+      <el-aside class="el_co_aside">
         <PageMenu></PageMenu>
       </el-aside>
-      <el-main>
+      <el-main class="el_co_main">
         <router-view />
       </el-main>
     </el-container>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+// npm i babel-eslint@7.2.3
 import PageMenu from '@/components/PageMenu'
 export default {
   components: { PageMenu },

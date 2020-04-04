@@ -1,5 +1,5 @@
 import Vue from 'vue'
-const noDataSvg = require('@/assets/nodata/NoData.png')
+const noDataSvg = require('@/assets/basicImg/NoData.png')
 
 function hasClass (el, cls) {
   if (!el || !cls) return false
