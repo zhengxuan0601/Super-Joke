@@ -21,3 +21,12 @@ a,a:hover,a:active,a:visited,a:link,a:focus{
 }
 ::-webkit-scrollbar{width: 6px;background-color: #fff;height: 6px;}
 ::-webkit-scrollbar-thumb{width: 6px;background-color: rgba(0, 0, 0, 0.1);border-radius: 3px;}
+.co_page {
+  height: 100vh;
+}
+.co_content {
+  padding: 8px;
+}
+.co_sider {
+  background: #fafafa;
+}
