@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/danmu.js"></script>
+    <title>记录你的生活</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wraper{
+            width: 100%;
+            height: 100vh;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .wraper .inputs{
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .wraper .inputs input[type=text]{
+            width: 300px;
+            height: 32px;
+            outline: none;
+            border: none;
+            padding-left: 10px;
+            float: left;
+            color: #cb6a89;
+            background: #f1f1f1;
+        }
+        .wraper .inputs input[type=text]::placeholder{
+            color:#cb6a89;
+        }
+        .wraper .inputs button{
+            width: 80px;
+            height: 32px;
+            border: none;
+            background: #cb6a89;
+            color: #fff;
+            float: left;
+            outline: none;
+            cursor: pointer;
+        }
+        .wraper p{
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .wraper span{
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .wraper .message{
+            position: absolute;
+            top:40%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background: #cb6a89;
+            width: 300px;
+            min-height: 30px;
+            line-height: 30px;
+            color: #4c4c4c;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .canvas{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+
+        <!-- 弹幕输入块 -->
+        <div class='inputs'>
+            <input class='itext' type="text" placeholder="快来一发弹幕吧 ( ゜- ゜)つロ " maxlength="30">
+            <button>发送</button>
+        </div>
+
+        <!-- 提示组件 -->
+        <div class='message' style="opacity: 0;">请输入发送的内容</div>
+
+        <!-- canvas画布 -->
+        <canvas class='canvas'></canvas>
+    </div>
+</body>
+<script>
+    var timer
+    var w = window.innerWidth
+    var h = window.innerHeight
+    var wraper = document.querySelector('.wraper')
+    var iText = document.querySelector('.itext')
+    var send = document.querySelector('button')
+    var mes = document.querySelector('.message')
+    // 生成随机数方法
+    function Random(x,y){
+        return Math.random()*(y-x)+x
+    }
+
+    // 生成随机颜色
+    function aColor(r,g,b){
+        return "rgb(" + r + "," + g + "," + b + " )"
+    }
+
+    // 生成节点的方法
+    function createText(){
+        var text=iText.value
+        // 将弹幕内容保存在本地
+        var textList = localStorage.getItem('textList')
+        if(textList){
+            textList = JSON.parse(textList)
+            textList.push(text)
+            textList = JSON.stringify(textList)
+            localStorage.setItem('textList',textList)
+        }else{
+            var textList = []
+            textList.push(text)
+            textList = JSON.stringify(textList)
+            localStorage.setItem('textList',textList)
+        }
+        var p = document.createElement('p')
+        p.innerText=text
+        p.style.color = aColor( Math.floor(Random(0,256)), Math.floor(Random(0,256)), Math.floor(Random(0,256)) )
+        p.style.left = Random( w*9/10, w) + "px"
+        p.style.top = Random(0,h) + "px"
+        wraper.append(p)
+        iText.value = ''
+        pMove()
+    }
+
+    // 文字移动方法
+    function pMove(){
+        var p = document.querySelectorAll('p')
+        timer = setInterval(function(){
+            for(var i = 0; i < p.length; i++){
+                p[i].style.left = (p[i].offsetLeft - Math.floor(Random(4,8))) + 'px'
+                if( p[i].offsetLeft < p[i].offsetWidth*-1 ){
+                    wraper.removeChild( p[i] )
+                }
+            }
+        },1000/60)
+    }
+
+    // 发送事件
+    function sendMes(){
+        if( !iText.value ){ 
+            showToast({
+                title:'请输入需要发送的内容',
+                duration: 2000
+            })
+            return
+        }else{
+            clearInterval(timer)
+            createText()
+        }
+    }
+
+    // 点击发送按钮
+    send.onclick = function(){
+        sendMes()
+    }
+
+    // 回车键发送
+    window.onkeypress = function(e){
+        if( e.keyCode=='13' ){
+            sendMes()
+        }
+    }
+
+    // 控制弹幕长度
+    iText.oninput = function(){
+        if( iText.value.length >= 30 ){
+            showToast({
+                title:'最多只能发送30个字符',
+                duration: 2000
+            })
+            return
+        }
+    }
+    
+
+    // 提示框组件
+    function showToast( message ){
+        var addTime, durationTime, reduceTime
+        clearInterval(addTime)
+        clearTimeout(durationTime)
+        clearInterval(reduceTime)
+        mes.innerText = message.title
+        mes.style.display = 'block'
+        addTime = setInterval( function(){
+            mes.style.opacity = mes.style['opacity']*1 + 0.1
+            if( mes.style['opacity'] >= 0.6 ){
+                clearInterval( addTime )
+                durationTime = setTimeout( function(){
+                    reduceTime = setInterval( function(){
+                        mes.style.opacity = mes.style['opacity']*1 - 0.1
+                        if( mes.style['opacity'] <= 0 ){
+                            mes.style.display = 'none'
+                            clearInterval( reduceTime )
+                        }
+                    } ,100)
+                } ,message.duration)
+            }
+        } ,100)
+    }
+</script>
+</html>

@@ -1,0 +1,70 @@
+.pagation{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    height: 36px;
+    align-items: center;
+}
+.pagation>p{
+    font-size: 15px;
+    color: #4c4c4c;
+    margin: 0 10px;
+}
+.pagation>p span{
+    padding: 0 5px;
+}
+.pagation button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+.pagation button i{
+    font-size: 20px;
+}
+.pagation button:hover{
+    color: #2080f7;
+}
+.pagation ul{
+    display: flex;
+}
+.pagation ul li{
+    min-width: 35px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    color: #4c4c4c;
+    transition: 0.5s;
+}
+.pagation ul li:hover{
+    color: #2080f7;
+}
+.pagation ul li.active{
+    color: #2080f7;
+}
+.pagation .jump{
+    margin-left: 20px;
+    color: #4c4c4c;
+    font-size: 15px;
+}
+.pagation .jump input[type='text']{
+    appearance: none;
+    width: 50px;
+    text-align: center;
+    border: 1px solid #dcdfe6;
+    outline: none;
+    height: 28px;
+    border-radius: 4px;
+    color: #4c4c4c;
+    transition: 0.5s;
+}
+.pagation .jump input[type='text']:focus{
+    border: 1px solid #2080f7;
+}
+.disabled{
+    color: #c0c4cc;
+}
+.disabled:hover{
+    cursor: not-allowed;
+    color: #c0c4cc !important;
+}
