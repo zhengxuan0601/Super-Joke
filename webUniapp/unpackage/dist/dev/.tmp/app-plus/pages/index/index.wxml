@@ -1,0 +1,1 @@
+<view class="content"><text data-event-opts="{{[['tap',[['showName',['$event']]]]]}}" bindtap="__e">这是首页</text><component-child vue-id="1" bind:__l="__l"></component-child></view>
