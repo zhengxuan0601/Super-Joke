@@ -1,15 +1,23 @@
+import { CONTEXT_SERVEAPI, SUCCESS_CODE } from '@/config'
+
 export default class Request {
-  http (router, method, data) {
-    const path = 'http://10.183.188.174:7025/invoice' //'/invoice'
-    return new Promise((resolve,reject) => {
+  http(router, method, data) {
+    return new Promise((resolve, reject) => {
       uni.request({
-        url: `${path}${router}`,
+        url: `${CONTEXT_SERVEAPI}${router}`,
         data: data,
-        method:method,
+        method: method,
         success: (res) => {
-          resolve(res.data)
+          if (res.data.errcode === SUCCESS_CODE) {
+            resolve(res.data)
+          } else {
+            reject(res.data)
+          }
+        },
+        fail: (err) => {
+          reject(err)
         }
       })
-    })    
+    })
   }
 }

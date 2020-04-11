@@ -1062,7 +1062,7 @@ function gz$gwx_1(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_1)return __WXML_GLOBAL__.ops_cached.$gwx_1
 __WXML_GLOBAL__.ops_cached.$gwx_1=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'这是一个组件'])
+Z([a,[[2,'+'],[[2,'+'],[1,'这是一个组件'],[[7],[3,'title']]],[1,'']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_1);return __WXML_GLOBAL__.ops_cached.$gwx_1
 }
 function gz$gwx_2(){
@@ -1070,10 +1070,9 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_2)return __WXML_GLOBAL__.ops_cached.$gwx_2
 __WXML_GLOBAL__.ops_cached.$gwx_2=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'content'])
-Z([3,'__e'])
-Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'showName']],[[4],[[5],[1,'$event']]]]]]]]]]])
 Z([3,'这是首页'])
 Z([3,'__l'])
+Z([[7],[3,'childTile']])
 Z([3,'1'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_2);return __WXML_GLOBAL__.ops_cached.$gwx_2
 }
@@ -1081,7 +1080,14 @@ function gz$gwx_3(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_3)return __WXML_GLOBAL__.ops_cached.$gwx_3
 __WXML_GLOBAL__.ops_cached.$gwx_3=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'_div'])
+Z([3,'page-body'])
+Z([3,'page-section page-section-gap'])
+Z([3,'vue-ref'])
+Z([3,'map'])
+Z([[7],[3,'latitude']])
+Z([[7],[3,'longitude']])
+Z([[7],[3,'covers']])
+Z([3,'width:100%;height:100vh;'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_3);return __WXML_GLOBAL__.ops_cached.$gwx_3
 }
 function gz$gwx_4(){
@@ -1117,11 +1123,11 @@ var m1=function(e,s,r,gg){
 var z=gz$gwx_2()
 var fE=_n('view')
 _rz(z,fE,'class',0,e,s,gg)
-var cF=_mz(z,'text',['bindtap',1,'data-event-opts',1],[],e,s,gg)
-var hG=_oz(z,3,e,s,gg)
+var cF=_n('text')
+var hG=_oz(z,1,e,s,gg)
 _(cF,hG)
 _(fE,cF)
-var oH=_mz(z,'component-child',['bind:__l',4,'vueId',1],[],e,s,gg)
+var oH=_mz(z,'component-child',['bind:__l',2,'title',1,'vueId',2],[],e,s,gg)
 _(fE,oH)
 _(r,fE)
 return r
@@ -1131,7 +1137,14 @@ d_[x[2]]={}
 var m2=function(e,s,r,gg){
 var z=gz$gwx_3()
 var oJ=_n('view')
-_rz(z,oJ,'class',0,e,s,gg)
+var lK=_n('view')
+_rz(z,lK,'class',0,e,s,gg)
+var aL=_n('view')
+_rz(z,aL,'class',1,e,s,gg)
+var tM=_mz(z,'map',['class',2,'data-ref',1,'latitude',2,'longitude',3,'markers',4,'style',5],[],e,s,gg)
+_(aL,tM)
+_(lK,aL)
+_(oJ,lK)
 _(r,oJ)
 return r
 }
@@ -1139,18 +1152,18 @@ e_[x[2]]={f:m2,j:[],i:[],ti:[],ic:[]}
 d_[x[3]]={}
 var m3=function(e,s,r,gg){
 var z=gz$gwx_4()
-var aL=_n('view')
-_rz(z,aL,'class',0,e,s,gg)
-_(r,aL)
+var bO=_n('view')
+_rz(z,bO,'class',0,e,s,gg)
+_(r,bO)
 return r
 }
 e_[x[3]]={f:m3,j:[],i:[],ti:[],ic:[]}
 d_[x[4]]={}
 var m4=function(e,s,r,gg){
 var z=gz$gwx_5()
-var eN=_n('view')
-_rz(z,eN,'class',0,e,s,gg)
-_(r,eN)
+var xQ=_n('view')
+_rz(z,xQ,'class',0,e,s,gg)
+_(r,xQ)
 return r
 }
 e_[x[4]]={f:m4,j:[],i:[],ti:[],ic:[]}

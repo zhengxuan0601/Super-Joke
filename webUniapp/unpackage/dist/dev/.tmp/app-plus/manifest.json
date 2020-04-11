@@ -69,6 +69,7 @@
         }
       }
     },
+    "arguments": "{\"name\":\"\",\"path\":\"\",\"query\":\"\",\"id\":0}",
     "allowsInlineMediaPlayback": true,
     "safearea": {
       "background": "#ffffff",
@@ -88,7 +89,7 @@
     "tabBar": {
       "color": "#7A7E83",
       "selectedColor": "#2080f7",
-      "borderStyle": "none",
+      "borderStyle": "rgba(255,255,255,0.4)",
       "backgroundColor": "#ffffff",
       "list": [
         {

@@ -1,18 +1,18 @@
 <template>
   <view>
-    这是一个组件
+    这是一个组件{{title}}
   </view>
 </template>
 
 <script>
   export default {
+    props: ['title'],
     data() {
       return {
-
+        
       }
     },
     created() {
-      console.log('这是一个组件')
     }
   }
 </script>

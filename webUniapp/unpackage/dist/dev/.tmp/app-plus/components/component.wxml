@@ -1,1 +1,1 @@
-<view>这是一个组件</view>
+<view>{{'这是一个组件'+title+''}}</view>

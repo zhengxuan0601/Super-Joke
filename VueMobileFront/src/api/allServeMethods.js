@@ -8,6 +8,6 @@ function getUserLogin (userName, password) {
   })
 }
 
-export default {
+export {
   getUserLogin
 }

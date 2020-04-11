@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { REQUEST_SUCCESS } from '../config'
-// import { Message } from 'element-ui'
+import { Toast } from 'vant'
 const http = axios.create({
   timeout: 5000,
   withCredentials: true
@@ -19,10 +19,7 @@ http.interceptors.response.use(function (response) {
   }
   // 对错误进行统一处理
   if (response.data.code !== REQUEST_SUCCESS) {
-    // Message({
-    //   message: response.data.errmsg,
-    //   type: 'error'
-    // })
+    Toast.fail(response.data.errmsg)
     return Promise.reject(response)
   }
   return Promise.resolve({
@@ -34,7 +31,7 @@ http.interceptors.response.use(function (response) {
   if (error.message.indexOf('timeout') > -1) {
     // 多语言需要自己在项目中配置
     // eslint-disable-next-line
-    // Message.error('请求超时，请重试！')
+    Toast.fail('请求超时，请重试！')
   }
   // http返回401的错误状态也认为是登录过期
   let res = error.response || {}

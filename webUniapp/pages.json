@@ -3,7 +3,8 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "首页"
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": true
       }
     },
     {
@@ -26,7 +27,7 @@
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "#fff",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "智能APP",
     "navigationBarBackgroundColor": "#2080f7",
     "backgroundColor": "#F8F8F8"
@@ -34,7 +35,7 @@
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#2080f7",
-    "borderStyle": "none",
+    "borderStyle": "white",
     "backgroundColor": "#ffffff",
     "list": [{
       "pagePath": "pages/index/index",
@@ -49,5 +50,15 @@
       "pagePath": "pages/user/user",
       "text": "用户"
     }]
+  },
+  "condition" : { //模式配置，仅开发期间生效
+    "current": 0, //当前激活的模式(list 的索引项)
+    "list": [
+      {
+        "name": "", //模式名称
+        "path": "", //启动页面，必选
+        "query": "" //启动参数，在页面的onLoad函数里面得到
+      }
+    ]
   }
 }
