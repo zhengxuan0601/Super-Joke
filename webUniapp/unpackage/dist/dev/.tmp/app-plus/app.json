@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/search/search",
     "pages/setting/setting",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/detail/detail"
   ],
   "window": {
     "navigationBarTextStyle": "white",

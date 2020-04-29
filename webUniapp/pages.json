@@ -24,6 +24,12 @@
       "style": {
         "navigationBarTitleText": "用户"
       }
+    },
+    {
+      "path": "pages/detail/detail",
+      "style": {
+        "navigationBarTitleText": "详情"
+      }
     }
   ],
   "globalStyle": {

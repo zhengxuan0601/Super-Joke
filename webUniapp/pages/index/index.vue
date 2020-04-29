@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    <text>这是首页</text>
+    <text @tap="toInfoPage">这是首订单页</text>
     <componentChild :title="childTile"></componentChild>
   </view>
 </template>
@@ -16,11 +16,19 @@
         childTile: ''
       }
     },
+    
     created() {
       this.childTile = '子组件222'
     },
+    
     methods: {
-      onPullDownRefresh() {
+      toInfoPage () {
+        uni.navigateTo({
+          url: '../detail/detail'
+        })
+      },
+      
+      onPullDownRefresh () {
         setTimeout(function() {
           uni.stopPullDownRefresh()
         }, 1000);

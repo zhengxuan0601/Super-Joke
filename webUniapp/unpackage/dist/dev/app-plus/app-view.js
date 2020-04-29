@@ -1069,16 +1069,26 @@ function gz$gwx_2(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_2)return __WXML_GLOBAL__.ops_cached.$gwx_2
 __WXML_GLOBAL__.ops_cached.$gwx_2=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'content'])
-Z([3,'这是首页'])
-Z([3,'__l'])
-Z([[7],[3,'childTile']])
-Z([3,'1'])
+Z([3,'_div'])
+Z([3,'详情页面'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_2);return __WXML_GLOBAL__.ops_cached.$gwx_2
 }
 function gz$gwx_3(){
 if( __WXML_GLOBAL__.ops_cached.$gwx_3)return __WXML_GLOBAL__.ops_cached.$gwx_3
 __WXML_GLOBAL__.ops_cached.$gwx_3=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'content'])
+Z([3,'__e'])
+Z([[4],[[5],[[4],[[5],[[5],[1,'tap']],[[4],[[5],[[4],[[5],[[5],[1,'toInfoPage']],[[4],[[5],[1,'$event']]]]]]]]]]])
+Z([3,'这是首订单页'])
+Z([3,'__l'])
+Z([[7],[3,'childTile']])
+Z([3,'1'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_3);return __WXML_GLOBAL__.ops_cached.$gwx_3
+}
+function gz$gwx_4(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_4)return __WXML_GLOBAL__.ops_cached.$gwx_4
+__WXML_GLOBAL__.ops_cached.$gwx_4=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'page-body'])
 Z([3,'page-section page-section-gap'])
@@ -1088,13 +1098,6 @@ Z([[7],[3,'latitude']])
 Z([[7],[3,'longitude']])
 Z([[7],[3,'covers']])
 Z([3,'width:100%;height:100vh;'])
-})(__WXML_GLOBAL__.ops_cached.$gwx_3);return __WXML_GLOBAL__.ops_cached.$gwx_3
-}
-function gz$gwx_4(){
-if( __WXML_GLOBAL__.ops_cached.$gwx_4)return __WXML_GLOBAL__.ops_cached.$gwx_4
-__WXML_GLOBAL__.ops_cached.$gwx_4=[];
-(function(z){var a=11;function Z(ops){z.push(ops)}
-Z([3,'_div'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_4);return __WXML_GLOBAL__.ops_cached.$gwx_4
 }
 function gz$gwx_5(){
@@ -1104,11 +1107,18 @@ __WXML_GLOBAL__.ops_cached.$gwx_5=[];
 Z([3,'_div'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_5);return __WXML_GLOBAL__.ops_cached.$gwx_5
 }
+function gz$gwx_6(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_6)return __WXML_GLOBAL__.ops_cached.$gwx_6
+__WXML_GLOBAL__.ops_cached.$gwx_6=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'_div'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_6);return __WXML_GLOBAL__.ops_cached.$gwx_6
+}
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);console.error(e);}
 }}}()
-var x=['./components/component.wxml','./pages/index/index.wxml','./pages/search/search.wxml','./pages/setting/setting.wxml','./pages/user/user.wxml'];d_[x[0]]={}
+var x=['./components/component.wxml','./pages/detail/detail.wxml','./pages/index/index.wxml','./pages/search/search.wxml','./pages/setting/setting.wxml','./pages/user/user.wxml'];d_[x[0]]={}
 var m0=function(e,s,r,gg){
 var z=gz$gwx_1()
 var oB=_n('view')
@@ -1123,12 +1133,8 @@ var m1=function(e,s,r,gg){
 var z=gz$gwx_2()
 var fE=_n('view')
 _rz(z,fE,'class',0,e,s,gg)
-var cF=_n('text')
-var hG=_oz(z,1,e,s,gg)
-_(cF,hG)
+var cF=_oz(z,1,e,s,gg)
 _(fE,cF)
-var oH=_mz(z,'component-child',['bind:__l',2,'title',1,'vueId',2],[],e,s,gg)
-_(fE,oH)
 _(r,fE)
 return r
 }
@@ -1136,37 +1142,52 @@ e_[x[1]]={f:m1,j:[],i:[],ti:[],ic:[]}
 d_[x[2]]={}
 var m2=function(e,s,r,gg){
 var z=gz$gwx_3()
-var oJ=_n('view')
-var lK=_n('view')
-_rz(z,lK,'class',0,e,s,gg)
-var aL=_n('view')
-_rz(z,aL,'class',1,e,s,gg)
-var tM=_mz(z,'map',['class',2,'data-ref',1,'latitude',2,'longitude',3,'markers',4,'style',5],[],e,s,gg)
-_(aL,tM)
-_(lK,aL)
-_(oJ,lK)
-_(r,oJ)
+var oH=_n('view')
+_rz(z,oH,'class',0,e,s,gg)
+var cI=_mz(z,'text',['bindtap',1,'data-event-opts',1],[],e,s,gg)
+var oJ=_oz(z,3,e,s,gg)
+_(cI,oJ)
+_(oH,cI)
+var lK=_mz(z,'component-child',['bind:__l',4,'title',1,'vueId',2],[],e,s,gg)
+_(oH,lK)
+_(r,oH)
 return r
 }
 e_[x[2]]={f:m2,j:[],i:[],ti:[],ic:[]}
 d_[x[3]]={}
 var m3=function(e,s,r,gg){
 var z=gz$gwx_4()
+var tM=_n('view')
+var eN=_n('view')
+_rz(z,eN,'class',0,e,s,gg)
 var bO=_n('view')
-_rz(z,bO,'class',0,e,s,gg)
-_(r,bO)
+_rz(z,bO,'class',1,e,s,gg)
+var oP=_mz(z,'map',['class',2,'data-ref',1,'latitude',2,'longitude',3,'markers',4,'style',5],[],e,s,gg)
+_(bO,oP)
+_(eN,bO)
+_(tM,eN)
+_(r,tM)
 return r
 }
 e_[x[3]]={f:m3,j:[],i:[],ti:[],ic:[]}
 d_[x[4]]={}
 var m4=function(e,s,r,gg){
 var z=gz$gwx_5()
-var xQ=_n('view')
-_rz(z,xQ,'class',0,e,s,gg)
-_(r,xQ)
+var oR=_n('view')
+_rz(z,oR,'class',0,e,s,gg)
+_(r,oR)
 return r
 }
 e_[x[4]]={f:m4,j:[],i:[],ti:[],ic:[]}
+d_[x[5]]={}
+var m5=function(e,s,r,gg){
+var z=gz$gwx_6()
+var cT=_n('view')
+_rz(z,cT,'class',0,e,s,gg)
+_(r,cT)
+return r
+}
+e_[x[5]]={f:m5,j:[],i:[],ti:[],ic:[]}
 if(path&&e_[path]){
 window.__wxml_comp_version__=0.02
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
@@ -1293,6 +1314,9 @@ __wxAppCode__['app.wxml']=$gwx('./app.wxml');
 
 __wxAppCode__['components/component.wxss']=undefined;    
 __wxAppCode__['components/component.wxml']=$gwx('./components/component.wxml');
+
+__wxAppCode__['pages/detail/detail.wxss']=undefined;    
+__wxAppCode__['pages/detail/detail.wxml']=$gwx('./pages/detail/detail.wxml');
 
 __wxAppCode__['pages/index/index.wxss']=undefined;    
 __wxAppCode__['pages/index/index.wxml']=$gwx('./pages/index/index.wxml');
