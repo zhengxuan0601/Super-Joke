@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    .co_canvas {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .co_canvas > canvas {
+      border: 1px solid #f1f1f1;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="co_canvas">
+    <canvas id="animationR" width="380" height="380"></canvas>
+    <canvas id="animationE" width="380" height="380"></canvas>
+  </div>
+</body>
+</html>
+<script src="../js/drawBall.js"></script>
+<script src="../js/animationR.js"></script>
+<script src="../js/animationE.js"></script>
