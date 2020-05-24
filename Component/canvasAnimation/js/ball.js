@@ -11,9 +11,9 @@ function Ball ({ width, height, x, y, r, color, speed }) {
   this.height = height
   this.x = x || Math.floor(api.getRandom(0, width))
   this.y = y || Math.floor(api.getRandom(0, height))
-  this.r = r || 3
+  this.r = r || 0.8
   this.color = color || api.getColorList[Math.floor(api.getRandom(0, 8))]
-  this.speed = speed || 1
+  this.speed = speed || 0.8
   this.id = api.getRandomId()
   this.randomAngel = api.getRandom(0, 360) * Math.PI / 180
   this.drawBall = function (cxt) {
@@ -43,5 +43,26 @@ Ball.prototype.updateAngel = function () {
     this.randomAngel = Math.PI - this.randomAngel
   } else if (this.y < 0 || this.y > this.height) {
     this.randomAngel = Math.PI * 2 - this.randomAngel
+  }
+}
+
+
+/**
+ * 两点之间画线构造函数
+ * @param {moveTo}  画线起点坐标
+ * @param {lineTo} 画线重点坐标
+ * @param {color}  
+ */
+function Line (moveTo, lineTo, color) {
+  this.moveTo = moveTo
+  this.lineTo = lineTo
+  this.color = color
+  this.drawLine = function (cxt) {
+    cxt.beginPath()
+    cxt.strokeStyle = this.color
+    cxt.lineWidth = 0.15
+    cxt.moveTo(moveTo.x, moveTo.y)
+    cxt.lineTo(lineTo.x, lineTo.y)
+    cxt.stroke()
   }
 }

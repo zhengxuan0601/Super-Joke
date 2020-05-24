@@ -42,17 +42,59 @@
         ball.drawBall(cxt);
         ballList.push(ball);
       }
-      console.log(ballList);
     }
-    drawball(80);
+    drawball(100);  
+    
+    var mouseX, mouseY;
+    window.onmousemove = function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }
+    window.onmouseout = function (e) {
+      mouseX = null
+      mouseY = null
+    }
+
+    // 判断画布上所有点的坐标, 若是两点间距离小于目标距离画线
+    function drawLine (ballList, distance) {
+      for (var i = 0; i < ballList.length; i++) {
+        for (var j = i + 1; j < ballList.length; j++) {
+          var disX = ballList[i].x - ballList[j].x;
+          var discY = ballList[i].y - ballList[j].y;;
+          if (Math.pow(disX, 2) + Math.pow(discY, 2) <= Math.pow(distance, 2)) {
+            var line = new Line(ballList[i], ballList[j], '#2080f7')
+            line.drawLine(cxt);
+          }
+        }
+        // 当鼠标移动时, 若有目标点距离鼠标的距离小于目标距离时两点连线,且所有点的方向均朝向鼠标位置
+        if (mouseX) {
+          var disX = ballList[i].x - mouseX;
+          var disY = ballList[i].y - mouseY;
+          if (Math.pow(disX, 2) + Math.pow(disY, 2) <= Math.pow(distance, 2)) {
+            var line = new Line({ x: mouseX, y: mouseY }, ballList[i], '#2080f7');
+            line.drawLine(cxt);
+            var disAngel = Math.atan2(-disY, -disX);
+            ballList[i].randomAngel = disAngel;
+            ballList[i].speed = 0;
+            ballList[i].drawBall(cxt);
+          } else {
+            ballList[i].speed = 0.8;
+            ballList[i].drawBall(cxt);
+          }
+        }
+      }
+    }
+
+    
 
     (function frame () {
-      cxt.clearRect(0, 0, width, height)
-      window.requestAnimationFrame(frame)
+      cxt.clearRect(0, 0, width, height);
+      window.requestAnimationFrame(frame);
       for (var i = 0; i < ballList.length; i++) {
-        ballList[i].moveBall()
-        ballList[i].drawBall(cxt)
+        ballList[i].moveBall();
+        ballList[i].drawBall(cxt);
       } 
+      drawLine(ballList, 60);
     })();
   }
 </script>
