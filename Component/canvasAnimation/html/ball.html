@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100%;
+      height: 100vh;
+      background: #000;
+    }
+    div {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="100%" height= '100%'></canvas>
+</body>
+</html>
+<script src="../js/util.js"></script>
+<script src="../js/ball.js"></script>
+<script>
+  window.onload = function () {
+    var width = document.documentElement.clientWidth;
+    var height = document.documentElement.clientHeight;
+    var canvas = document.getElementById("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var cxt = canvas.getContext("2d");
+    var ballList = [];
+    // 定义多个球形并绘制
+    function drawball (num) {
+      for (var i = 0; i < num; i++) {
+        var ball = new Ball({ width, height })
+        ball.drawBall(cxt);
+        ballList.push(ball);
+      }
+      console.log(ballList);
+    }
+    drawball(80);
+
+    (function frame () {
+      cxt.clearRect(0, 0, width, height)
+      window.requestAnimationFrame(frame)
+      for (var i = 0; i < ballList.length; i++) {
+        ballList[i].moveBall()
+        ballList[i].drawBall(cxt)
+      } 
+    })();
+  }
+</script>
