@@ -43,7 +43,7 @@
         ballList.push(ball);
       }
     }
-    drawball(100);  
+    drawball(10);  
     
     var mouseX, mouseY;
     window.onmousemove = function (e) {
@@ -75,7 +75,7 @@
             line.drawLine(cxt);
             var disAngel = Math.atan2(-disY, -disX);
             ballList[i].randomAngel = disAngel;
-            ballList[i].speed = 0;
+            ballList[i].speed = 0.2;
             ballList[i].drawBall(cxt);
           } else {
             ballList[i].speed = 0.8;
@@ -84,8 +84,27 @@
         }
       }
     }
-
     
+    var flag = false
+    var scatterBall = [];
+    document.documentElement.onclick = function (e) {
+      flag = true;
+      scatterBall = []
+      var pageX = e.clientX;
+      var pageY = e.clientY;
+      if (scatterBall.length) {
+        for (var i = 0; i < scatterBall.length; i++) {
+          scatterBall[i].x = pageX;
+          scatterBall[i].y = pageY;
+          scatterBall[i].vx = api.getRandom(-0.6, 0.6);
+          scatterBall[i].vy = api.getRandom(-4, -3);
+        }
+      }
+      for (var i = 0; i < 20; i++) {
+        var ball = new Ball({ x: pageX, y: pageY })
+        scatterBall.push(ball);
+      }
+    };
 
     (function frame () {
       cxt.clearRect(0, 0, width, height);
@@ -95,6 +114,13 @@
         ballList[i].drawBall(cxt);
       } 
       drawLine(ballList, 60);
+      if (flag) {
+        for (var i = 0; i < scatterBall.length; i++) {
+          scatterBall[i].scatterBall(cxt, function () {
+            flag = false;
+          });
+        }
+      }
     })();
   }
 </script>

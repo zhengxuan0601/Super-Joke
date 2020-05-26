@@ -1,7 +1,7 @@
 var api = {
   // 获取指定范围随机数方法
   getRandom: function (start, end) {
-    return Math.random() * end - start + start
+    return Math.random() * (end - start) + start
   },
 
   // 定义颜色数组

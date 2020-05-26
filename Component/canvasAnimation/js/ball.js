@@ -16,6 +16,9 @@ function Ball ({ width, height, x, y, r, color, speed }) {
   this.speed = speed || 0.8
   this.id = api.getRandomId()
   this.randomAngel = api.getRandom(0, 360) * Math.PI / 180
+  this.vx = api.getRandom(-0.6, 0.6)
+  this.vy = api.getRandom(-4, -3)
+  this.g = 0.1
   this.drawBall = function (cxt) {
     cxt.save()
     cxt.beginPath()
@@ -44,6 +47,18 @@ Ball.prototype.updateAngel = function () {
   } else if (this.y < 0 || this.y > this.height) {
     this.randomAngel = Math.PI * 2 - this.randomAngel
   }
+}
+
+// 小球散射方法
+Ball.prototype.scatterBall = function (cxt, callback) {
+  this.x += this.vx
+  this.vy += this.g
+  this.y += this.vy
+  if (this.vy > 4) {
+    callback()
+    return
+  }
+  this.drawBall(cxt)
 }
 
 
