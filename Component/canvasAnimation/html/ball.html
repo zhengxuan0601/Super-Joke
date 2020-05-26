@@ -24,8 +24,8 @@
   <canvas id="canvas" width="100%" height= '100%'></canvas>
 </body>
 </html>
-<script src="../js/util.js"></script>
-<script src="../js/ball.js"></script>
+<script src="../common/util.js"></script>
+<script src="../common/ball.js"></script>
 <script>
   window.onload = function () {
     var width = document.documentElement.clientWidth;
@@ -43,7 +43,7 @@
         ballList.push(ball);
       }
     }
-    drawball(10);  
+    drawball(100);  
     
     var mouseX, mouseY;
     window.onmousemove = function (e) {
@@ -100,7 +100,7 @@
           scatterBall[i].vy = api.getRandom(-4, -3);
         }
       }
-      for (var i = 0; i < 20; i++) {
+      for (var i = 0; i < 30; i++) {
         var ball = new Ball({ x: pageX, y: pageY })
         scatterBall.push(ball);
       }

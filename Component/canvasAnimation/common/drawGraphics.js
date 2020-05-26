@@ -1,5 +1,5 @@
 /**
- * 
+ * 球形绘制
  * @param {x} x 球形横坐标
  * @param {y} y 球形纵坐标
  * @param {r} r 球形半径
@@ -8,11 +8,11 @@
 function DrawBall (x, y, r, color) {
   this.x = x || 0
   this.y = y || 0
-  this.r = r || 10
+  this.r = r || 4
   this.color = color || '#2080f7'
 }
 
-// 描边原型
+// 描边圆形
 DrawBall.prototype.drawStroke = function (cxt) {
   cxt.save()
   cxt.beginPath()
@@ -22,7 +22,7 @@ DrawBall.prototype.drawStroke = function (cxt) {
   cxt.restore()
 }
 
-// 填充原型
+// 填充圆形
 DrawBall.prototype.drawFill = function (cxt) {
   cxt.save()
   cxt.beginPath()
@@ -35,7 +35,7 @@ DrawBall.prototype.drawFill = function (cxt) {
 
 
 /**
- * 
+ * 椭圆绘制
  * @param {*} x 椭圆横坐标
  * @param {*} y 椭圆纵坐标
  * @param {*} a 椭圆长轴
@@ -61,7 +61,7 @@ DrawEllipse.prototype.drawStroke = function (cxt) {
 }
 
 /**
- * 
+ * 三角函数图形
  * @param {*} x 三角函数起始坐标点x
  * @param {*} y 三角函数起始坐标点y
  * @param {*} range 三角函数范围 默认Math.PI * 2
@@ -91,6 +91,48 @@ DrawSine.prototype.drawStroke = function (cxt) {
     cxt.fillStyle = this.color
     cxt.fill()
     cxt.closePath()
+    cxt.restore()
+  }
+}
+
+/**
+ * 绘制正多边形
+ * @param {x} 正多边形中心横坐标 
+ * @param {*} 正多边形中心纵坐标 
+ * @param {*} 正多边形边数
+ * @param {*} 正多边形大小 中心距离定点的距离
+ * @param {*} 
+ */
+function DrawRegularPolygon (x, y, n, size, color) {
+  this.x = x
+  this.y = y
+  this.n = n
+  this.size = size
+  this.color = color || '#000'
+  this.angelRadious = Math.PI * 2 / n
+  this.drawPolygonStroke = function (cxt) {
+    cxt.save()
+    cxt.translate(this.x, this.y)
+    for (var i = 0; i < this.n; i++) {
+      var dx = Math.cos(i * this.angelRadious) * this.size
+      var dy = Math.sin(i * this.angelRadious) * this.size
+      cxt.strokeStyle = this.color
+      cxt.lineTo(dx, dy)
+    }
+    cxt.lineTo(size, 0)
+    cxt.stroke()
+    cxt.restore()
+  }
+  this.drawPolygonFill = function (cxt) {
+    cxt.save()
+    cxt.translate(this.x, this.y)
+    for (var i = 0; i < this.n; i++) {
+      var dx = Math.cos(i * this.angelRadious) * this.size
+      var dy = Math.sin(i * this.angelRadious) * this.size
+      cxt.fillStyle = this.color
+      cxt.lineTo(dx, dy)
+    }
+    cxt.fill()
     cxt.restore()
   }
 }

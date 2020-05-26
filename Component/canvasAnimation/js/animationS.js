@@ -17,7 +17,7 @@
     var dx = startAngel * 20 + 20;
     var dy = Math.sin(startAngel) * 30 + canvasHeight / 2;
     if (startAngel > Math.PI * 2) {
-      ball.color = 'pink'
+      ball.color = 'blue'
     } else {
       ball.color = '#2080f7'
     }
