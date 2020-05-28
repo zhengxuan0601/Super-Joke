@@ -113,12 +113,28 @@ function DrawRegularPolygon (x, y, n, size, color) {
   this.drawPolygonStroke = function (cxt) {
     cxt.save()
     cxt.translate(this.x, this.y)
+    var pointList = []
+    var equationList = []
     for (var i = 0; i < this.n; i++) {
       var dx = Math.cos(i * this.angelRadious) * this.size
       var dy = Math.sin(i * this.angelRadious) * this.size
+      pointList.push({ x: dx, y: dy })
+      if (i > 0 && i <= this.n - 1) {
+        var k = (pointList[i].y - pointList[i - 1].y)  / (pointList[i].x - pointList[i - 1].x)
+        var b = pointList[i].y - k * pointList[i].x
+        equationList.push({k, b})
+      } 
+      if (i === this.n - 1) {
+        console.log(1)
+        var k = (pointList[i].y - pointList[0].y)  / (pointList[i].x - pointList[0].x)
+        var b = pointList[i].y - k * pointList[i].x
+        equationList.push({k, b})
+      }
       cxt.strokeStyle = this.color
       cxt.lineTo(dx, dy)
     }
+    console.log(pointList)
+    console.log(equationList)
     cxt.lineTo(size, 0)
     cxt.stroke()
     cxt.restore()
