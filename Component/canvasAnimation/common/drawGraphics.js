@@ -136,3 +136,61 @@ function DrawRegularPolygon (x, y, n, size, color) {
     cxt.restore()
   }
 }
+
+/**
+ * 绘制圆角矩形
+ * @param {x} 圆角矩形其实横坐标 
+ * @param {y} 圆角矩形其实纵坐标 
+ * @param {radius} 圆角大小 
+ * @param {width} 矩形长度 
+ * @param {height} 矩形宽度
+ */
+function DrawRectRadius (id, x, y, strokeColor, fillColor, text1, text2) {
+  this.id = id
+  this.x = x
+  this.y = y
+  this.strokeColor = strokeColor
+  this.fillColor = fillColor
+  this.text1 = text1
+  this.text2 = text2
+  this.drawRect = function (cxt) {
+    this.drawRectRadius(cxt, 132, 42, this.x, this.y, 2, this.fillColor, this.strokeColor, this.text1, '#4c4c4c')
+    this.drawRectRadius(cxt, 30, 30, this.x + 6, this.y + 6, 2, this.strokeColor, this.strokeColor, this.text2, '#fff')
+    this.drawRadius(cxt)
+  }
+  // 绘制圆角矩形
+  this.drawRectRadius = function (cxt, width, height, x, y, radius, fillColor, strokeColor, text, textColor) {
+    cxt.save()
+    cxt.beginPath()
+    cxt.lineWidth = 2
+    cxt.moveTo(x + radius, y)
+    cxt.moveTo(width + x - radius, y)
+    cxt.arcTo(width + x, y, width + x, y + radius, radius)
+    cxt.lineTo(width + x, y + height - radius)
+    cxt.arcTo(width + x, y + height, width + x - radius, y + height, radius)
+    cxt.lineTo(x + radius, y + height)
+    cxt.arcTo(x, y + height, x, y + height - radius, radius)
+    cxt.lineTo(x, y + radius)
+    cxt.arcTo(x, y, x + radius, y, radius)
+    cxt.strokeStyle = strokeColor
+    cxt.fillStyle = fillColor
+    cxt.closePath()
+    cxt.stroke()
+    cxt.fill()
+    cxt.beginPath()
+    cxt.font = '12px PingFangSC-Regular'
+    cxt.fillStyle = textColor
+    cxt.textAlign = 'center'
+    cxt.textBaseline = 'middle'
+    cxt.fillText(text, x + width / 2, y + 3 + height / 2)
+    cxt.restore()
+  }
+
+  // 绘制左边半圆连接点
+  this.drawRadius = function (cxt) {
+    cxt.beginPath()
+    cxt.strokeStyle = '#2080f7'
+    cxt.arc(132 + this.x, 22 + this.y, 4, -90 * Math.PI / 180, 90 * Math.PI / 180, false)
+    cxt.stroke()
+  }
+}

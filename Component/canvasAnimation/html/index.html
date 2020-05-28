@@ -25,11 +25,25 @@
     <canvas id="animationE" width="320" height="320"></canvas>
     <canvas id="animationS" width="320" height="320"></canvas>
     <canvas id="regularPolygon" width="320" height="320"></canvas>
+    <canvas id="rectRadius" width="320" height="320"></canvas>
   </div>
 </body>
 </html>
 <script src="../common/drawGraphics.js"></script>
-<!-- <script src="../js/animationR.js"></script>
+<script src="../js/animationR.js"></script>
 <script src="../js/animationS.js"></script>
 <script src="../js/animationE.js"></script>
-<script src="../js/regularPolygon.js"></script> -->
+<script src="../js/regularPolygon.js"></script>
+<script>
+  var rectRadious = document.getElementById('rectRadius')
+  var width = rectRadious.width
+  var height = rectRadious.height
+  var rectRadiousCxt = rectRadious.getContext('2d')
+  var rectList = []
+  for (var i = 0; i < 3; i++) {
+    var rectRadius = new DrawRectRadius('is', width / 2 - 66, i * 60 + 70, '#2080f7', '#EBF6FF', '通联', '10%')
+    rectRadius.drawRect(rectRadiousCxt)
+    rectList.push(rectRadius)
+  }
+  console.log(rectList)  
+</script>
