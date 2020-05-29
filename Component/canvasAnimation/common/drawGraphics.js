@@ -110,41 +110,37 @@ function DrawRegularPolygon (x, y, n, size, color) {
   this.size = size
   this.color = color || '#000'
   this.angelRadious = Math.PI * 2 / n
+  this.pointList = []
+  this.equationList = []
   this.drawPolygonStroke = function (cxt) {
     cxt.save()
-    cxt.translate(this.x, this.y)
-    var pointList = []
-    var equationList = []
+    cxt.beginPath()
     for (var i = 0; i < this.n; i++) {
-      var dx = Math.cos(i * this.angelRadious) * this.size
-      var dy = Math.sin(i * this.angelRadious) * this.size
-      pointList.push({ x: dx, y: dy })
+      var dx = Math.cos(i * this.angelRadious) * size + this.x
+      var dy = Math.sin(i * this.angelRadious) * size + this.y
+      this.pointList.push({ x: dx, y: dy })
       if (i > 0 && i <= this.n - 1) {
-        var k = (pointList[i].y - pointList[i - 1].y)  / (pointList[i].x - pointList[i - 1].x)
-        var b = pointList[i].y - k * pointList[i].x
-        equationList.push({k, b})
+        var k = (this.pointList[i].y - this.pointList[i - 1].y)  / (this.pointList[i].x - this.pointList[i - 1].x)
+        var b = this.pointList[i].y - k * this.pointList[i].x
+        this.equationList.push({k, b})
       } 
       if (i === this.n - 1) {
-        console.log(1)
-        var k = (pointList[i].y - pointList[0].y)  / (pointList[i].x - pointList[0].x)
-        var b = pointList[i].y - k * pointList[i].x
-        equationList.push({k, b})
+        var k = (this.pointList[i].y - this.pointList[0].y)  / (this.pointList[i].x - this.pointList[0].x)
+        var b = this.pointList[i].y - k * this.pointList[i].x
+        this.equationList.push({k, b})
       }
       cxt.strokeStyle = this.color
       cxt.lineTo(dx, dy)
     }
-    console.log(pointList)
-    console.log(equationList)
-    cxt.lineTo(size, 0)
+    cxt.lineTo(size + this.x, this.y)
     cxt.stroke()
     cxt.restore()
   }
   this.drawPolygonFill = function (cxt) {
     cxt.save()
-    cxt.translate(this.x, this.y)
     for (var i = 0; i < this.n; i++) {
-      var dx = Math.cos(i * this.angelRadious) * this.size
-      var dy = Math.sin(i * this.angelRadious) * this.size
+      var dx = Math.cos(i * this.angelRadious) * this.size + this.x
+      var dy = Math.sin(i * this.angelRadious) * this.size + this.y
       cxt.fillStyle = this.color
       cxt.lineTo(dx, dy)
     }
