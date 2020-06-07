@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    body {
+      width: 100%;
+      height: 100vh;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+</body>
+</html>
+<script>
+   window.onload = function () {
+    var width = document.documentElement.clientWidth;
+    var height = document.documentElement.clientHeight;
+    var canvas = document.getElementById("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var cxt = canvas.getContext("2d");
+    cxt.beginPath()
+    cxt.moveTo(200, 200)
+    cxt.lineTo(200, 280)
+    cxt.lineWidth = 3
+    cxt.lineCap = 'round'
+    var linear = cxt.createLinearGradient(200, 280, 200, 200)
+    linear.addColorStop(0, '#2080f7')
+      linear.addColorStop(1, '#000')
+    cxt.strokeStyle = linear
+    cxt.stroke()
+   }
+</script>
