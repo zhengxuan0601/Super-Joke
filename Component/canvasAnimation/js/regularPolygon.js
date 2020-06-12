@@ -38,7 +38,7 @@
       if (Infinity !== Math.abs(equationList[moveStep].k)) {
         if (startY >= initY) {
           startX -= speed;
-          if (startX < (moveStep === pointList.length - 1 ? pointList[0].x : pointList[moveStep + 1].x) + speed) {
+          if (startX < (moveStep === pointList.length - 1 ? pointList[0].x : pointList[moveStep + 1].x) + speed * 1.1) {
             moveStep ++;
             if (moveStep === equationList.length) {
               moveStep = 0
@@ -46,7 +46,7 @@
           }
         } else {
           startX += speed;
-          if (startX > (moveStep === pointList.length - 1 ? pointList[0].x : pointList[moveStep + 1].x) + speed) {
+          if (startX > (moveStep === pointList.length - 1 ? pointList[0].x : pointList[moveStep + 1].x)) {
             moveStep ++;
           }
         }
