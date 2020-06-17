@@ -101,7 +101,11 @@
     s_rotate = S / 60 * Math.PI * 2;
     timeInterval = nowTime.getHours() > 12 ? 'PM' : 'AM';
   }
-
+  calculateRotate();
+  drawClockBoard();
+  drawMinScale('fz');
+  drawMinScale('sz');
+  drawSecondScale();
   setInterval(function () {
     cxt.clearRect(0, 0, 320, 320);
     calculateRotate();

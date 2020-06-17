@@ -106,7 +106,7 @@ var api = {
 }
 
 /* 根据传入的圆心、半径及两个控制点确定起点和重点弧度 */
-function getStartAndEndAngel(radialR, R, p1, p2, lessRadian) {
+function getStartAndEndAngel(radialR, R, p1, p2) {
   var horizontalPoint = { x: radialR.x + r, y: radialR.y }
   var startPoint = p1.x > p2.x ? p1 : p2
   var disCosA = 2 * Math.pow(R, 2) - (Math.pow(startPoint.x - horizontalPoint.x, 2) + Math.pow(startPoint.y - horizontalPoint.y, 2))

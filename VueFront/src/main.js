@@ -5,8 +5,9 @@ import store from './store'
 import Element from 'element-ui'
 import { noDataDirective } from '@/lib/directives' // 引入自定义指令，无数据
 import 'element-ui/lib/theme-chalk/index.css'
-import './style/common.css'
-import './style/global.less'
+import '@/style/common.css'
+import '@/style/global.less'
+import '@/assets/iconfont/iconfont.css'
 
 Vue.use(Element)
 Vue.config.productionTip = false
