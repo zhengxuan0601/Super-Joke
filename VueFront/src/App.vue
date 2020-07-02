@@ -10,7 +10,7 @@
 </template>
 
 <script>
-// cnpm i babel-eslint@7.2.3
+// cnpm i babel-eslint@7.2.3 --save
 import PageMenu from '@/components/PageMenu'
 export default {
   components: { PageMenu },
