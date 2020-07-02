@@ -1,1 +1,0 @@
-<view class="content"><text data-event-opts="{{[['tap',[['toInfoPage',['$event']]]]]}}" bindtap="__e">这是首订单页</text><component-child vue-id="1" title="{{childTile}}" bind:__l="__l"></component-child></view>
