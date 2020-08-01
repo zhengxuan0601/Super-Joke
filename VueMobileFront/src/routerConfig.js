@@ -4,6 +4,10 @@ export default [
     redirect: '/homemain/home'
   },
   {
+    path: '/error/404',
+    component: 'Error'
+  },
+  {
     path: '/homemain',
     name: 'HomeMain',
     component: 'BarPage/HomeMain',

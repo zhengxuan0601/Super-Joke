@@ -3,7 +3,8 @@ export default  [
     title: '首页展示',
     router: '/contextmain/index',
     icon: '',
-    component: 'Index/Index'
+    component: 'Index/Index',
+    
   },
   {
     title: '关于我们',

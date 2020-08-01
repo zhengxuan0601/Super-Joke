@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from '../routerConfig'
-
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 Vue.use(Router)
+
 const createRoute = (routes) => {
   return routes.reduce((processedRoutes, currentRoute) => {
     processedRoutes.push(processRouteObj(currentRoute))
@@ -32,7 +36,7 @@ const router = new Router({
 
 router.beforeEach(async (to, form, next) => {
   // 防止死循环跳出
-  if (to.path.indexOf('error') > -1) {
+  if (to.path.indexOf('/error') > -1) {
     next()
     return
   }

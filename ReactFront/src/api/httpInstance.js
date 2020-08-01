@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message } from 'antd'
 import { REQUEST_SUCCESS } from '../config'
 const http = axios.create({
-  timeout: 40000,
+  timeout: 60000,
   withCredentials: true,
 })
 

@@ -25,6 +25,9 @@
     <canvas id="animationE" width="320" height="320"></canvas>
     <canvas id="animationS" width="320" height="320"></canvas>
     <canvas id="regularPolygon" width="320" height="320"></canvas>
+    <canvas id="curve" width="320" height="320"></canvas>
+    <canvas id="clock" width="320" height="320"></canvas>
+    <canvas id="test" width="320" height="320"></canvas>
   </div>
 </body>
 </html>
@@ -34,3 +37,48 @@
 <script src="../js/animationS.js"></script>
 <script src="../js/animationE.js"></script>
 <script src="../js/regularPolygon.js"></script>
+<script src="../js/curve.js"></script>
+<script src="../js/clock.js"></script>
+<script>
+  var tCanvas = document.getElementById('test')
+  var cxt = tCanvas.getContext('2d')
+  var p0 = { x: 30, y: 180 }
+  var p1 = { x: 60, y: 100 }
+  var p2 = { x: 200, y: 100 }
+  
+  var t = 0;
+  
+
+  var translateY = 60;
+  (function renderFrame () {
+    window.requestAnimationFrame(renderFrame);
+    cxt.clearRect(0, 0, 320, 320);
+    translateY += 1.6;
+    if (translateY > 320) {
+      translateY = 60;
+    }
+    cxt.save();
+    cxt.beginPath();
+    cxt.translate(100, translateY);
+    cxt.lineCap = 'round'
+    cxt.moveTo(0, 60);
+    cxt.lineTo(0, 0);
+    cxt.lineWidth = 3;
+    var linear = cxt.createLinearGradient(1, 60, 1, 0);
+    linear.addColorStop(0, '#2080f7')
+    linear.addColorStop(1, '#fff')
+    cxt.strokeStyle = linear;
+    cxt.stroke();
+    cxt.closePath();
+    cxt.restore();
+
+    cxt.beginPath();
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.fillStyle = '#2080f7';
+    cxt.font = '12px 微软雅黑';
+    cxt.textAlign = 'center';
+    cxt.textBaseline = 'middle';
+    cxt.fillText('浙江卫视', 160, 161);
+  })();
+</script>

@@ -3,7 +3,8 @@ import './PageMenu.less'
 import { Menu } from 'antd'
 import NavList from '@/navConfig'
 import { NavLink, withRouter } from 'react-router-dom'
-import { AlignLeftOutlined } from '@ant-design/icons'
+import { AlignLeftOutlined, MailOutlined } from '@ant-design/icons'
+
 const { SubMenu } = Menu
 
 class PageMenu extends React.Component {
@@ -46,7 +47,7 @@ class PageMenu extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='h-page-menu'>
         <div className="btn_toggle">
           <AlignLeftOutlined onClick={this.toggleCollapsed}/>
         </div>
@@ -63,6 +64,7 @@ class PageMenu extends React.Component {
                   key={itemName.router}
                   title={
                     <span>
+                      <MailOutlined />
                       <span>{itemName.title}</span>
                     </span>
                   }>
@@ -77,7 +79,7 @@ class PageMenu extends React.Component {
               )
             } else {
               return (
-                <Menu.Item key={itemName.router}>
+                <Menu.Item key={itemName.router} icon={<MailOutlined />}>
                   <NavLink to={itemName.router}><span>{itemName.title}</span></NavLink>
                 </Menu.Item>
               )
