@@ -3,7 +3,11 @@ import './PageMenu.less'
 import { Menu } from 'antd'
 import NavList from '@/navConfig'
 import { NavLink, withRouter } from 'react-router-dom'
-import { AlignLeftOutlined, MailOutlined } from '@ant-design/icons'
+import { MenuFoldOutlined } from '@ant-design/icons'
+import { createFromIconfontCN } from '@ant-design/icons';
+const MyIcon = createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1850723_228q6dczm48.js', // 在 iconfont.cn 上生成
+});
 
 const { SubMenu } = Menu
 
@@ -49,7 +53,7 @@ class PageMenu extends React.Component {
     return (
       <div className='h-page-menu'>
         <div className="btn_toggle">
-          <AlignLeftOutlined onClick={this.toggleCollapsed}/>
+          <MenuFoldOutlined onClick={this.toggleCollapsed} />
         </div>
         <Menu
         selectedKeys={[this.state.activeKey]}
@@ -64,7 +68,7 @@ class PageMenu extends React.Component {
                   key={itemName.router}
                   title={
                     <span>
-                      <MailOutlined />
+                      <MyIcon type={itemName.icon} />
                       <span>{itemName.title}</span>
                     </span>
                   }>
@@ -79,7 +83,7 @@ class PageMenu extends React.Component {
               )
             } else {
               return (
-                <Menu.Item key={itemName.router} icon={<MailOutlined />}>
+                <Menu.Item key={itemName.router} icon={<MyIcon type={itemName.icon} />}>
                   <NavLink to={itemName.router}><span>{itemName.title}</span></NavLink>
                 </Menu.Item>
               )

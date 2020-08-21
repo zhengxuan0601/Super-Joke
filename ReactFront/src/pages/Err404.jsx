@@ -11,7 +11,6 @@ const imgCss = {
   margin: '-180px 0 0 -180px'
 }
 export default class Err extends React.Component {
-  
   render () {
     return (
       <div style={outCss}>

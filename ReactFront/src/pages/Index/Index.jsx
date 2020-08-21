@@ -1,7 +1,7 @@
 import React from 'react'
 import './Index.less'
 import { Button } from 'antd'
-import API from '../../api/allServeApi'
+import API from '@/api/allServeApi'
 
 export default class Index extends React.Component {
   componentDidMount () {
@@ -20,7 +20,7 @@ export default class Index extends React.Component {
     return (
       <div className="co_index">
         <p>欢迎使用</p>
-        <Button onClick={() => this.getMethods()} type="primary">React</Button>
+        <Button onClick={this.getMethods} type="primary">React</Button>
       </div>
     )
   }
