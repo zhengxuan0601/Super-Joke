@@ -19,14 +19,14 @@ http.interceptors.response.use(function (response) {
   }
 
   // 对错误进行统一处理
-  if (response.data.errcode !== REQUEST_SUCCESS) {
-    message.error(response.data.errmsg, 1.5)
+  if (response.data.code !== REQUEST_SUCCESS) {
+    message.error(response.data.msg, 1.5)
     return Promise.reject(response)
   }
   return Promise.resolve({
-    code: response.data.errcode,
-    msg: response.data.errmsg,
-    data: response.data.responseObject
+    code: response.data.code,
+    msg: response.data.msg,
+    data: response.data.data
   })
 }, function (error) {
   if (error.message.indexOf('timeout') > -1) {

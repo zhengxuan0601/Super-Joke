@@ -2,7 +2,8 @@ import React from 'react'
 import { Layout } from 'antd'
 import PageMenu from '@/components/PageMenu/PageMenu'
 import routes from '@/router/Router'
-import {renderRoutes} from 'react-router-config';
+import {renderRoutes} from 'react-router-config'
+import { Switch } from 'react-router-dom'
 const { Sider, Content } = Layout
 
 export default class ContextMain extends React.Component {
@@ -27,7 +28,9 @@ export default class ContextMain extends React.Component {
           collapsed={this.state.collapsed}
           handelCollapsed={this.handelCollapsed}/></Sider>
         <Content className="co_content">
-          {renderRoutes(routes)}
+          <Switch>
+            {renderRoutes(routes)}
+          </Switch>
         </Content>
       </Layout>
     )

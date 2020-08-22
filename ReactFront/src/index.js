@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import MyRoute from './router'
 import './style/common.css'
-import '@/assets/iconfont/iconfont.css'
 import * as serviceWorker from './serviceWorker'
 import { calculateClientREM } from './lib/rem'
+require('./mock')
 
 ReactDOM.render(<MyRoute />, document.getElementById('root'))
 
