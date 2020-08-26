@@ -7,10 +7,11 @@
   "liveServer.settings.proxy": {
     "enable": true,
     "baseUri": "/pos",
-    "proxyUri": "http://10.183.188.101:7025",
+    "proxyUri": "http://10.183.188.174:7025/pos",
+    // "baseUri": "/payment-voice",
+    // "proxyUri": "http://10.183.188.174:7025/payment-voice",
   },
   "editor.detectIndentation": false,
-  "liveServer.settings.donotShowInfoMsg": true,
   "editor.tabSize": 2,
   "files.associations": {
     "*.cjson": "jsonc",
@@ -49,5 +50,6 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.startupEditor": "welcomePage"
+  "workbench.startupEditor": "welcomePage",
+  "liveServer.settings.donotShowInfoMsg": true,
 }

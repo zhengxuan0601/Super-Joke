@@ -1,22 +1,18 @@
-import React from 'react'
-import { getmainClassifyList } from '@/api/allServeApi'
+import React, { useState, useEffect } from 'react'
 
-export default class About extends React.Component {
-  componentDidMount () {
-    this.getMockParams.bind(this)()
-  }
+export default function About () {
+  const [count, setCount] = useState(0)
 
-  getMockParams () {
-    getmainClassifyList().then(res => {
-      console.log(res)
-    })
-  }
-  
-  render () {
-    return (
-      <div>
-        关于我们
-      </div>
-    )
-  }
+  useEffect(() => {
+    return () => {
+      console.log('clear')
+    }
+  })
+
+  return (
+    <div>
+      关于
+      <p onClick={ () => { setCount(count + 1) } }>{ count }</p>
+    </div>
+  )
 }
