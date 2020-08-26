@@ -1,18 +1,34 @@
-import React, { useState, useEffect } from 'react'
-
-export default function About () {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    return () => {
-      console.log('clear')
+import React from 'react'
+import store from '@/redux'
+export default class About extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      count: store.getState().inputVal
     }
-  })
+    store.subscribe(() => {
+      this.setState({
+        count: store.getState().inputVal
+      })
+    })
+  }
 
-  return (
-    <div>
-      关于
-      <p onClick={ () => { setCount(count + 1) } }>{ count }</p>
-    </div>
-  )
+  addCountClick () {
+    const action = {
+      type: 'SET_UPDATE_VALUE',
+      value: this.state.count + 1
+    }
+    store.dispatch(action)
+  }
+
+  render () {
+    return (
+      <div>
+        <p 
+          onClick={ this.addCountClick.bind(this) }
+          style={{ cursor: 'pointer' }}>关于</p>
+        <span>{ this.state.count }</span>
+      </div>
+    )
+  }
 }
