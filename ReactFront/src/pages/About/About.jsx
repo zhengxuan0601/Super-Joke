@@ -18,7 +18,9 @@ export default class About extends React.Component {
       type: 'SET_UPDATE_VALUE',
       value: this.state.count + 1
     }
-    store.dispatch(action)
+    store.dispatch(function (dispatch) {
+      dispatch(action)
+    })
   }
 
   render () {
