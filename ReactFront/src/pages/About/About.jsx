@@ -26,7 +26,7 @@ export default class About extends React.Component {
   render () {
     return (
       <div>
-        <p 
+        <p
           onClick={ this.addCountClick.bind(this) }
           style={{ cursor: 'pointer' }}>关于</p>
         <span>{ this.state.count }</span>

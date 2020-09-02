@@ -1,10 +1,9 @@
-export default  [
+export default [
   {
     title: '首页展示',
     router: '/contextmain/index',
     icon: 'iconh_bingzt',
-    component: 'Index/Index',
-    
+    component: 'Index/Index'
   },
   {
     title: '关于我们',
