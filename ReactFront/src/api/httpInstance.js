@@ -3,7 +3,7 @@ import { message } from 'antd'
 import { REQUEST_SUCCESS } from '../config'
 const http = axios.create({
   timeout: 60000,
-  withCredentials: true,
+  withCredentials: true
 })
 
 // 相应拦截器
