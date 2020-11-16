@@ -1,5 +1,5 @@
 import reducer from './reducer'
-import { createStore, applyMiddleware  } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // eslint-disable-next-line no-unused-vars
