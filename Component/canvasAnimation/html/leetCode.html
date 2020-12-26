@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script> 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+ var removeDuplicates = function(nums) {
+    if (!nums.length) {
+        return nums;
+    }
+    var targetArr = [];
+    for (var i = 0; i < nums.length; i++) {
+        if (targetArr.findIndex(item => item === nums[i]) > -1) {
+            continue;
+        }
+        let left = i + 1;
+        while (left < nums.length) {
+            if (nums[left] === nums[i]) {
+                targetArr.push(nums[left]);
+                nums.splice(left, 1);
+            } else {
+                left++;
+            }
+        }
+    }
+    console.log(nums);
+    return nums;
+};
+removeDuplicates([1,1,2]);
+</script>
+</html>
