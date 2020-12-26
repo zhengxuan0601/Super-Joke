@@ -16,4 +16,4 @@ module.exports = override(
     javascriptEnabled: true,
     localIdentName: '[local]--[hash:base64:5]'
   })
-);
+)

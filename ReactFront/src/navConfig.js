@@ -1,21 +1,20 @@
-export default  [
+export default [
   {
     title: '首页展示',
     router: '/contextmain/index',
-    icon: '',
-    component: 'Index/Index',
-    
+    icon: 'iconh_bingzt',
+    component: 'Index/Index'
   },
   {
     title: '关于我们',
     router: '/contextmain/about',
-    icon: '',
+    icon: 'iconh_qiandzs',
     component: 'About/About'
   },
   {
     title: '菜单分类',
     router: 'menu',
-    icon: '',
+    icon: 'iconh_tezys',
     children: [
       {
         title: '菜单分类1',
@@ -33,7 +32,7 @@ export default  [
   {
     title: '菜单分类2',
     router: 'menu2',
-    icon: '',
+    icon: 'iconh_shuj',
     children: [
       {
         title: '菜单分类3',
