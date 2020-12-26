@@ -13,7 +13,7 @@ function newRandomId () {
 
 /**
  * 函数防抖
- * @author huyanhui
+ * @author zhengxuan
  * @param func 需要防抖的实际方法
  * @param wait 延迟执行毫秒数
  * @param immediate true 表立即执行，false 表非立即执行
@@ -41,7 +41,7 @@ function debounce (func, wait, immediate) {
 
 /**
  * 函数节流
- * @author huyanhui
+ * @author zhengxuan
  * @param func 需要节流的实际方法
  * @param wait 延迟执行毫秒数(需要控制的时间长度)
  * @param type 1 表时间戳版，2 表定时器版

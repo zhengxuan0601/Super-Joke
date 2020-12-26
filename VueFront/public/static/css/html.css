@@ -1,0 +1,90 @@
+.index_loading {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+  animation: animateRotate 1.6s infinite ease-out;
+}
+.index_loading > div {
+  width: 36%;
+  height: 36%;
+  margin: 7%;
+  background: #2080f7;
+  border-radius: 50%;
+}
+.index_loading .one {
+  animation: animateOne 1s infinite linear;
+  animation-direction:alternate;
+}
+.index_loading .two {
+  animation: animateTwo 1s infinite linear;
+  animation-direction:alternate;
+  animation-delay: .5s;
+  opacity: .2;
+}
+.index_loading .three {
+  animation: animateThree 1s infinite linear;
+  animation-direction:alternate;
+  animation-delay: 1.5s;
+  opacity: .2;
+}
+.index_loading .four {
+  animation: animateFour 1s infinite linear;
+  animation-direction:alternate;
+  animation-delay: 1s;
+  opacity: .2;
+}
+
+@keyframes animateRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animateOne {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateTwo {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateThree {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateFour {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}

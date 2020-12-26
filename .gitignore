@@ -3,3 +3,4 @@ node_modules/
 .idea
 .vscode
 /安装包及文件
+/VueFront/package-lock.json
