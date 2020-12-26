@@ -5,7 +5,7 @@ module.exports = function (app) {
     target: 'http://10.183.188.174:7025/invoice',
     changeOrigin: true,
     pathRewrite: {
-      "^/invoice": ""
+      '^/invoice': ''
     }
   }))
 }

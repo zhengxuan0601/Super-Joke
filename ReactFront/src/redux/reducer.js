@@ -1,7 +1,7 @@
 import * as TYPE from './muations'
 const stateData = {
   inputVal: 0,
-  order: ""
+  order: ''
 }
 
 export default (state = stateData, action) => {
@@ -15,9 +15,9 @@ export default (state = stateData, action) => {
       newState = JSON.parse(JSON.stringify(state))
       newState.order = action.value
       return newState
-  
+
     default:
-      break;
+      break
   }
   return state
 }

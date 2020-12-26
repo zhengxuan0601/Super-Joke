@@ -4,10 +4,10 @@ import { Menu } from 'antd'
 import NavList from '@/navConfig'
 import { NavLink, withRouter } from 'react-router-dom'
 import { MenuFoldOutlined } from '@ant-design/icons'
-import { createFromIconfontCN } from '@ant-design/icons';
+import { createFromIconfontCN } from '@ant-design/icons'
 const MyIcon = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1850723_228q6dczm48.js', // 在 iconfont.cn 上生成
-});
+  scriptUrl: '//at.alicdn.com/t/font_1850723_228q6dczm48.js' // 在 iconfont.cn 上生成
+})
 
 const { SubMenu } = Menu
 
@@ -20,7 +20,7 @@ class PageMenu extends React.Component {
       rootSubmenuKeys: []
     }
   }
-  
+
   componentDidMount () {
     this.pageRouterUpdate()
   }
@@ -48,19 +48,21 @@ class PageMenu extends React.Component {
   }
 
   toggleCollapsed () {
+    console.log(this.props)
     this.props.handelCollapsed(!this.props.collapsed)
   }
 
-  onOpenChange = openKeys => {
+  onOpenChange (openKeys) {
     const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1)
     if (this.state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
       this.setState({ openKeys })
     } else {
       this.setState({
-        openKeys: latestOpenKey ? [latestOpenKey] : [],
+        openKeys: latestOpenKey ? [latestOpenKey] : []
       })
     }
   }
+
 
   render () {
     return (
@@ -71,7 +73,7 @@ class PageMenu extends React.Component {
         <Menu
           selectedKeys={[this.state.activeKey]}
           onClick={this.handleMenuClick.bind(this)}
-          onOpenChange={this.onOpenChange}
+          onOpenChange={this.onOpenChange.bind(this)}
           openKeys={this.state.openKeys}
           mode="inline">
           {NavList.map(itemName => {

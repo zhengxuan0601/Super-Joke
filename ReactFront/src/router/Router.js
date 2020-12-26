@@ -7,7 +7,7 @@ export default [
   {
     name: 'Index',
     path: '/contextmain/index',
-    component: Index,
+    component: Index
   },
   {
     name: 'About',
@@ -18,5 +18,5 @@ export default [
     name: 'Err404',
     path: '',
     component: Err404
-  },
+  }
 ]

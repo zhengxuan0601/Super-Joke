@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 import { Route, HashRouter as Router, Switch, Redirect } from 'react-router-dom'
 import ContextMain from '@/pages/ContextMain/ContextMain'
 import Login from '@/pages/Login/Login'
 
 export default class MyRoute extends React.Component{
-  render() {
+  render () {
     return(
       <Router>
         <Switch>
