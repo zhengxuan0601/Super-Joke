@@ -10,12 +10,12 @@ module.exports = {
     port: 8000,
     // 用于开发环境下与后端联调
     proxy: {
-      '/invoice': {
+      '/feedbook': {
         ws: false,
-        target: 'http://10.183.188.174:7025/invoice',
+        target: 'http://192.168.1.104:3000/feedbook',
         changeOrigin: true,
         pathRewrite: {
-          '^/invoice/': ''
+          '^/feedbook/': ''
         }
       }
     }
