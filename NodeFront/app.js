@@ -1,7 +1,6 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const SERVER_NAME = require('./config').SERVER_NAME
-const routerList = require('./router')
+import express from 'express'
+import bodyParser from 'body-parser'
+import routerList from './router'
 
 /**
  * 初始化框架,并将初始化后的函数给予 '当前页面'全局变量 app

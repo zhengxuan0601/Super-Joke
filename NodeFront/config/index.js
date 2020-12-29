@@ -1,3 +1,3 @@
-exports.SERVER_NAME = '/feedbook'
-exports.SUCCESS_STATUS = '0'
-exports.ERR_STATUS = '-1'
+export const SERVER_NAME = '/feedbook'
+export const SUCCESS_STATUS = '0'
+export const ERR_STATUS = '-1'

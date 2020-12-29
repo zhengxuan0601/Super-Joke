@@ -1,6 +1,6 @@
-const express = require('express')
+import express from 'express'
+import * as STATUS from '../config'
 const router = express.Router()
-const STATUS = require('../config')
 
 router.post('/', (req, res) => {
   let searchParams = req.body
@@ -21,4 +21,4 @@ router.post('/', (req, res) => {
   }
 })
 
-module.exports = router
+export default router

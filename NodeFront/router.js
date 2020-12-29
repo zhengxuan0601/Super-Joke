@@ -1,13 +1,16 @@
-const SERVER_NAME = require('./config').SERVER_NAME
+import { SERVER_NAME } from './config'
+import getUserInfo from './router/getUserInfo'
+import userLogin from './router/userLogin'
+
 const routerList = [
   {
-    component: require('./router/getUserInfo'),
+    component: getUserInfo,
     path: `${SERVER_NAME}/v1/getuserInfo`
   },
   {
-    component: require('./router/userLogin') ,
+    component: userLogin,
     path: `${SERVER_NAME}/v1/userLogin`
   }
 ]
 
-module.exports = routerList
+export default routerList

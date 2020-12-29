@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
+import * as STATUS from '../config'
 const router = express.Router()
-const STATUS = require('../config')
 
-router.get('/', (req, res) => {
+router.get('/', (_req, res) => {
   let responParams = {
     code: STATUS.SUCCESS_STATUS,
     data: {
@@ -15,4 +15,4 @@ router.get('/', (req, res) => {
   res.send(responParams)
 })
 
-module.exports = router
+export default router
