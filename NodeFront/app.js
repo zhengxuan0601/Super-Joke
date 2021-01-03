@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import routerList from './router'
+import db from './mongodb/db.js'
 
 /**
  * 初始化框架,并将初始化后的函数给予 '当前页面'全局变量 app
