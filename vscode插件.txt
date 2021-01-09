@@ -1,0 +1,13 @@
+Vetur
+background
+Beauty
+Chinese
+Docker
+ESLint
+formate
+Highlight
+jQuery Code Snippets
+Live Serve
+minapp
+Prettier - Code formatter
+px2rem
