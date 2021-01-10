@@ -3,9 +3,9 @@ import * as STATUS from '../../config'
 import Admin from '../../models/userinfo'
 const router = express.Router()
 
-router.get('/', (req, response) => {
-  let deleteName = req.query.userName
-  Admin.remove({ userName: deleteName }, (err, res) => {
+router.post('/', (req, response) => {
+  let deleteId = req.body.id
+  Admin.remove({ id: deleteId }, (err, res) => {
     if (!err) {
       response.send({
         code: STATUS.SUCCESS_STATUS,

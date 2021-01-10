@@ -4,7 +4,7 @@ import Admin from '../../models/userinfo'
 const router = express.Router()
 
 router.get('/', (req, response) => {
-  Admin.find((err, res) => {
+  Admin.find({}, { _id: 0, __v: 0 }, (err, res) => {
     if (!err) {
       response.send({
         code: STATUS.SUCCESS_STATUS,

@@ -1,7 +1,8 @@
 import { SERVER_NAME } from './config'
-import addNewPersonInfo from './controller/userInfo/userinfo'
+import addNewPersonInfo from './controller/userInfo/adduser'
 import findAllUser from './controller/userInfo/findAllUser'
-import deleteUserByUserName from './controller/userInfo/deleteUser'
+import updatePersonInfo from './controller/userInfo/updateuser'
+import deleteUserById from './controller/userInfo/deleteUser'
 
 const routerList = [
   {
@@ -13,8 +14,12 @@ const routerList = [
     path: `${SERVER_NAME}/v1/findAllUser`
   },
   {
-    component: deleteUserByUserName,
-    path: `${SERVER_NAME}/v1/deleteUserByUserName`
+    component: deleteUserById,
+    path: `${SERVER_NAME}/v1/deleteUserById`
+  },
+  {
+    component: updatePersonInfo,
+    path: `${SERVER_NAME}/v1/updatePersonInfo`
   }
 ]
 
