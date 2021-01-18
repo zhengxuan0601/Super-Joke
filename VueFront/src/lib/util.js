@@ -213,4 +213,69 @@ function copyTargetText (id, attr, callback) {
   }
 }
 
-export { newRandomId, debounce, throttle, getCenterByRAndPoint, copyTargetText }
+/**
+ * 根据指定id和parentId关系将一维数据结构转成tree属性结构
+ * @param { Array } data 需要转变的数据
+ * @param { String } id 数据唯一标识id
+ * @param { String } parentId 数据指定父级唯一标识
+ * @return { Object } 返回树形结构object
+ */
+function translateDataToTree (data, id = 'id', parentId = 'parentId') {
+  const idMapping = data.reduce((prev, cur, i) => {
+    prev[cur[id]] = i
+    return prev
+  }, {})
+
+  let root = {}
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][parentId] === undefined || data[i][parentId] === null) {
+      root = data[i]
+      continue
+    }
+    const parentEl = data[idMapping[data[i][parentId]]]
+    parentEl.children = [...(parentEl.children || []), data[i]]
+  }
+  return root
+}
+
+/**
+ * 时间格式化
+ * @param { Date } time 需要格式化时间
+ * @param { String } fmt 时间格式化具体格式
+ */
+function timeFormat (time, fmt) {
+  if (typeof time === 'object' || typeof new Date(time) === 'object') {
+    time = new Date(time)
+    if (!fmt) fmt = 'yyyy-MM-dd hh:mm:ss'
+    var o = {
+      'M+': time.getMonth() + 1, // 月份
+      'd+': time.getDate(), // 日
+      'h+': time.getHours(), // 小时
+      'm+': time.getMinutes(), // 分
+      's+': time.getSeconds(), // 秒
+      'q+': Math.floor((time.getMonth() + 3) / 3), // 季度
+      S: time.getMilliseconds() // 毫秒
+    }
+    if (/(y+)/.test(fmt)) {
+      fmt = fmt.replace(
+        RegExp.$1,
+        (time.getFullYear() + '').substr(4 - RegExp.$1.length)
+      )
+    }
+    for (var k in o) {
+      if (new RegExp('(' + k + ')').test(fmt)) {
+        fmt = fmt.replace(
+          RegExp.$1,
+          RegExp.$1.length === 1
+            ? o[k]
+            : ('00' + o[k]).substr(('' + o[k]).length)
+        )
+      }
+    }
+    return fmt
+  } else {
+    return time || ''
+  }
+}
+
+export { newRandomId, debounce, throttle, getCenterByRAndPoint, copyTargetText, translateDataToTree, timeFormat }
