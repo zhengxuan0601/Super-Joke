@@ -278,4 +278,25 @@ function timeFormat (time, fmt) {
   }
 }
 
-export { newRandomId, debounce, throttle, getCenterByRAndPoint, copyTargetText, translateDataToTree, timeFormat }
+/**
+ * 列表滚动时实现fadeIn效果
+ * @param { String } el 需要实现过渡显示效果类名
+ */
+function scrollLoadCard (el) {
+  let clientH = document.documentElement.clientHeight
+  let scrollTop = document.documentElement.scrollTop
+  let cardList = document.querySelectorAll(el)
+  if (!cardList || !cardList.length) return
+  for (let i = 0; i < cardList.length; i++) {
+    if (cardList[i].offsetTop < clientH + scrollTop) {
+      cardList[i].classList.add('show_animate')
+    } else {
+      cardList[i].classList.remove('show_animate')
+    }
+    if (cardList[i].offsetTop < scrollTop) {
+      cardList[i].classList.remove('show_animate')
+    }
+  }
+}
+
+export { newRandomId, debounce, throttle, getCenterByRAndPoint, copyTargetText, translateDataToTree, timeFormat, scrollLoadCard }

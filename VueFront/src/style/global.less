@@ -2,6 +2,7 @@ body {
   background: #fafafa;
   color: #4c4c4c;
 }
+
 .el_co_page {
   width: 100%;
   height: 100vh;
@@ -14,6 +15,7 @@ body {
     padding: 0px;
   }
 }
+
 .no-data-fallback {
   position: absolute;
   width: 100%;
@@ -30,5 +32,18 @@ body {
     img {
       height: 100px;
     }
+  }
+}
+
+.show_animate {
+  animation: fadeIn 600ms ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
