@@ -1,0 +1,14 @@
+.index_loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(34,32,33);
+}
+.index_loading > .loading_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -200px;
+}

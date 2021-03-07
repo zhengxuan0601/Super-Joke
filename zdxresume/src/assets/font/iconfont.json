@@ -1,0 +1,51 @@
+{
+  "id": "2368251",
+  "name": "resume",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "19869739",
+      "name": "weixin",
+      "font_class": "weixin",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "19869740",
+      "name": "qq",
+      "font_class": "qq",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "19869741",
+      "name": "zhihu",
+      "font_class": "zhihu",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "19869742",
+      "name": "ios-email-outline",
+      "font_class": "ios-email-outline",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "19869743",
+      "name": "weibo",
+      "font_class": "weibo",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "19869744",
+      "name": "GitHub",
+      "font_class": "GitHub",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}

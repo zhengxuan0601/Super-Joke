@@ -1,0 +1,104 @@
+<template>
+  <div class="_canvas">
+    <canvas id="canvas"></canvas>
+  </div>
+</template>
+
+<script>
+import { Ball, Line } from '@/lib/ball'
+export default {
+  data () {
+    return {
+
+    }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      this.createCanvas()
+    })
+  },
+
+  methods: {
+    createCanvas () {
+      var width = document.documentElement.clientWidth
+      var height = document.documentElement.clientHeight
+      var canvas = document.getElementById('canvas')
+      canvas.width = width
+      canvas.height = height
+      var cxt = canvas.getContext('2d')
+      var ballList = []
+      // 定义多个球形并绘制
+      function drawball (num) {
+        for (var i = 0; i < num; i++) {
+          var ball = new Ball({ width, height })
+          ball.drawBall(cxt)
+          ballList.push(ball)
+        }
+      }
+      drawball(100)
+
+      var mouseX, mouseY
+      window.onmousemove = function (e) {
+        mouseX = e.clientX
+        mouseY = e.clientY
+      }
+      window.onmouseout = function (e) {
+        mouseX = null
+        mouseY = null
+      }
+
+      // 判断画布上所有点的坐标, 若是两点间距离小于目标距离画线
+      function drawLine (ballList, distance) {
+        for (var i = 0; i < ballList.length; i++) {
+          for (var j = i + 1; j < ballList.length; j++) {
+            var disX = ballList[i].x - ballList[j].x
+            var discY = ballList[i].y - ballList[j].y
+            if (Math.pow(disX, 2) + Math.pow(discY, 2) <= Math.pow(distance, 2)) {
+              var line = new Line(ballList[i], ballList[j])
+              line.drawLine(cxt)
+            }
+          }
+          // 当鼠标移动时, 若有目标点距离鼠标的距离小于目标距离时两点连线,且所有点的方向均朝向鼠标位置
+          if (mouseX) {
+            // eslint-disable-next-line no-redeclare
+            var disX = ballList[i].x - mouseX
+            var disY = ballList[i].y - mouseY
+            if (Math.pow(disX, 2) + Math.pow(disY, 2) <= Math.pow(distance, 2)) {
+              // eslint-disable-next-line no-redeclare
+              var line = new Line({ x: mouseX, y: mouseY }, ballList[i])
+              line.drawLine(cxt)
+              var disAngel = Math.atan2(-disY, -disX)
+              ballList[i].randomAngel = disAngel
+              ballList[i].speed = 0.6
+              ballList[i].drawBall(cxt)
+            }
+          }
+        }
+      }
+
+      (function frame () {
+        cxt.clearRect(0, 0, width, height)
+        window.requestAnimationFrame(frame)
+        for (var i = 0; i < ballList.length; i++) {
+          ballList[i].moveBall()
+          ballList[i].drawBall(cxt)
+        }
+        drawLine(ballList, 30)
+      })()
+    }
+  }
+}
+</script>
+
+<style scoped lang="less">
+._canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999999999;
+  pointer-events: none;
+}
+</style>

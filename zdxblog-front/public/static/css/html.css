@@ -1,0 +1,170 @@
+
+.index_loading {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgb(34,32,33);
+}
+.index_loading > .loading_img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -200px 0 0 -200px;
+}
+
+
+@keyframes animateRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  60% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animateOne {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateTwo {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateThree {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateFour {
+  from {
+    opacity: .1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.loading_cover {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, #3574d1, #eeaaaa);
+}
+.loading_bg {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 9;
+  transform: translate(-50%, -50%) scale(.6);
+}
+
+.loading_bg .track1 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #227295;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading_bg .radius1 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #227295;
+  z-index: 1;
+  transform: translate(156px, 146px) rotate(0deg);
+  transform-origin: -6px 4px;
+  animation: ratate_one 1s linear infinite;
+}
+
+.loading_bg .track2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #227295;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading_bg .radius2 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #227295;
+  z-index: 1;
+  transform: translate(171px, 141px) rotate(0deg);
+  transform-origin: -21px 4px;
+  animation: ratate_two 2s linear infinite;
+}
+
+.loading_bg .track3 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid #227295;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loading_bg .radius3 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #227295;
+  z-index: 1;
+  transform: translate(186px, 136px) rotate(0deg);
+  transform-origin: -36px 2px;
+  animation: ratate_three 3s linear infinite;
+}
+
+@keyframes ratate_one {
+  from {
+    transform: translate(156px, 146px) rotate(0deg);
+  }
+  to {
+    transform: translate(156px, 146px) rotate(360deg);
+  }
+}
+
+@keyframes ratate_two {
+  from {
+    transform: translate(171px, 141px) rotate(0deg);
+  }
+  to {
+    transform: translate(171px, 141px) rotate(-360deg);
+  }
+}
+
+@keyframes ratate_three {
+  from {
+    transform: translate(186px, 136px) rotate(0deg);
+  }
+  to {
+    transform: translate(186px, 136px) rotate(360deg);
+  }
+}

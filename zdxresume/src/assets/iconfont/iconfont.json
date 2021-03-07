@@ -1,0 +1,16 @@
+{
+  "id": "1885695",
+  "name": "vuefront",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "vue前端配置图标",
+  "glyphs": [
+    {
+      "icon_id": "15340324",
+      "name": "toogle_menu",
+      "font_class": "toogle_menu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
